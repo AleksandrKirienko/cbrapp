@@ -1,0 +1,22 @@
+<table class="table table-striped table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th><%= '4 weeks ago' %></th>
+      <th><%= '3 weeks ago' %></th>
+      <th><%= 'The week before last' %></th>
+      <th><%= 'The last week' %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @deltas.each do |key, value| %>
+      <tr>
+        <td><%= key.upcase %></td>
+        <td><%= "#{value.first}%" %></td>
+        <td><%= "#{value.second}%" %></td>
+        <td><%= "#{value.third}%" %></td>
+        <td><%= "#{value.fourth}%" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

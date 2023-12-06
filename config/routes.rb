@@ -1,3 +1,6 @@
+require 'sidekiq/web'
+# mount Sidekiq::Web => '/sidekiq'
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -7,4 +10,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :rate_delta, only: [:index]
 end
