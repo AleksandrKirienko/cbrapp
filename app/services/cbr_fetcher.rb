@@ -15,10 +15,10 @@ class CbrFetcher
       currency = valute.at('CharCode').text.downcase
 
       next unless CurrencyRate.currencies.keys.include?(currency)
-      
+
       rate = valute.at('VunitRate').text.gsub(',', '.').to_f.round(2)
 
-      result << {currency: currency, rate: rate, fetched_at: fetched_at}
+      result << { currency:, rate:, fetched_at: }
     end
   end
 

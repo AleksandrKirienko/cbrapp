@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RateDeltaController < ApplicationController
   DEFAULT_WEEK_COUNT = 4
 

@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_174941) do
     t.date "fetched_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["fetched_at"], name: "index_currency_rates_on_fetched_at"
+    t.index ["currency", "fetched_at"], name: "index_currency_rates_on_currency_and_fetched_at", unique: true
   end
 
 end

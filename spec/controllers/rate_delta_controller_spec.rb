@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe RateDeltaController, type: :controller do
@@ -5,7 +7,9 @@ RSpec.describe RateDeltaController, type: :controller do
     let(:deltas) { 'some delta' }
 
     it 'assigns @deltas with summary deltas for default week count' do
-      allow_any_instance_of(RateProcessor).to receive(:get_summary_deltas).with(RateDeltaController::DEFAULT_WEEK_COUNT).and_return(deltas)
+      allow_any_instance_of(RateProcessor).to receive(:get_summary_deltas)
+        .with(RateDeltaController::DEFAULT_WEEK_COUNT)
+        .and_return(deltas)
 
       get :index
 

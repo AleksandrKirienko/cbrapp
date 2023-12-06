@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
 class RateProcessor
+  # TODO: Maybe make sense to change logic to make single request instead 3 for both methods
+  #   I didn't have enough time
+  #
   def get_summary_deltas(weeks_count)
-    CurrencyRate.currencies.keys.each_with_object({}) do |currency, result|
-      result[currency] = get_weekly_deltas(currency, weeks_count)
+    CurrencyRate.currencies.keys.index_with do |currency|
+      get_weekly_deltas(currency, weeks_count)
     end
   end
 
   def get_chart_data(initial_date = 1.month.ago.to_date)
-    date_array = (initial_date..Date.today).each_with_object(["x"]) do |date, date_array|
-      date_array << date.strftime("%Y-%m-%d")
+    date_array = (initial_date..Time.zone.today).each_with_object(['x']) do |date, date_list|
+      date_list << date.strftime('%Y-%m-%d')
     end
 
     CurrencyRate.currencies.keys.each_with_object([date_array]) do |currency, chart_data|
@@ -34,7 +37,7 @@ class RateProcessor
   end
 
   def last_weeks_groups(currency, initial_date)
-    CurrencyRate.where(currency: currency).where("fetched_at >= ?", initial_date)
+    CurrencyRate.where(currency:).where('fetched_at >= ?', initial_date)
                 .order(fetched_at: :asc)
   end
 
