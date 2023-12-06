@@ -1,6 +1,9 @@
 FROM ruby:3.2
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get install -y npm
+# RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+# RUN apt-get install -y nodejs
 
 RUN gem install bundler
 

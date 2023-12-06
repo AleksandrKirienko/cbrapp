@@ -1,0 +1,30 @@
+<head>
+  <link href="https://unpkg.com/c3@0.4.21/c3.css" rel="stylesheet">
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://unpkg.com/c3@0.4.21/c3.js"></script>
+</head>
+
+<body>
+  <div id="chart" data="<%= @chart_data %>" }>
+
+    <script type="text/javascript">
+      var chartData = JSON.parse(document.getElementById("chart").getAttribute("data"))
+      var chart = c3.generate({
+        bindto: '#chart',
+        data: {
+          x: 'x',
+          xFormat: '%Y-%m-%d',
+          columns: chartData
+        },
+        axis: {
+          x: {
+            type: 'timeseries',
+            tick: {
+              format: '%Y-%m-%d'
+            }
+          }
+        }
+      });
+    </script>
+  </div>
+</body>

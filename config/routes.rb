@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :rate_delta, only: [:index]
+  resources :rate_chart, only: [:index]
 end
