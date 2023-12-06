@@ -34,8 +34,7 @@ class RateProcessor
   end
 
   def last_weeks_groups(currency, initial_date)
-    CurrencyRate.where(currency: currency)
-                .where("fetched_at >= ?", initial_date)
+    CurrencyRate.where(currency: currency).where("fetched_at >= ?", initial_date)
                 .order(fetched_at: :asc)
   end
 
